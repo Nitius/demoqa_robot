@@ -14,6 +14,6 @@ Open Demoqa site
 Verify Demoqa site
     Wait Until Element Is Visible    //img[@alt='Selenium Online Training']  5
 
-Wait until ublock initalizing
+Wait until ublock initializing
     Wait Until Element Is Visible    //div[@id='fixedban']    10
     Wait Until Element Is Not Visible    //div[@id='fixedban']    10

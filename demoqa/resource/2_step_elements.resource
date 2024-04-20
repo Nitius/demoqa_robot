@@ -107,8 +107,9 @@ Verify "Registration Form" modal
     Wait Until Element Is Visible    //div[@id='registration-form-modal']
 
 Fill "First Name" field
+    [Arguments]    ${value}
     Wait Until Element Is Visible    //input[@id='firstName']
-    Input Text    //input[@id='firstName']    Test
+    Input Text    //input[@id='firstName']    ${value}
 
 Fill "Last Name" field
     Wait Until Element Is Visible    //input[@id='lastName']
@@ -127,4 +128,23 @@ Fill "Department" field
     Input Text    //input[@id='department']    Tester
 
 Verify new table row
-    Wait Until Element Is Visible    //div[text()='Test'] | //div[text()='User']
+    [Arguments]    ${value}
+    Wait Until Element Is Visible    //div[text()='${value}'] | //div[text()='User']
+
+Fill "Type to search" searchbar
+    Input Text    //input[@id='searchBox']    Test
+
+Verify search results
+    Wait Until Element Is Not Visible    //div[text()='Kierra']
+    Wait Until Element Is Not Visible    //div[text()='Alden']
+    Wait Until Element Is Not Visible    //div[text()='Cierra']
+    Wait Until Element Is Visible    //div[text()='Test']
+
+Click on the "Edit" button
+    Click Element    //span[@title='Edit']
+
+Click on the "Delete" button
+    Click Element    //span[@title='Delete']
+    
+Verify new table row is deleted
+    Wait Until Element Is Not Visible    //div[text()='User']

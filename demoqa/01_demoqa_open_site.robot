@@ -18,7 +18,7 @@ Navigate to Website
     [Tags]    local
     Open Demoqa site
     Verify Demoqa site
-    Wait until ublock initalizing
+    Wait until ublock initializing
 
 Navigate to Website in headless
     [Tags]    headless
