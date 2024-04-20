@@ -9,5 +9,5 @@ robot --exclude headless demoqa/
 
 To run in headless mode, run the following command:
 ```bash
-robot --exclude headless demoqa/
+robot --exclude local demoqa/
 ```
