@@ -7,7 +7,7 @@ Resource    resource/1_step_navigation.resource
 *** Test Cases ***
 
 Setup Webdriver
-    [Tags]    local
+    [Tags]    browser
     Webdriver Setup
 
 Setup Webdriver Headless
@@ -15,7 +15,7 @@ Setup Webdriver Headless
     Webdriver Setup Headless
 
 Navigate to Website
-    [Tags]    local
+    [Tags]    browser
     Open Demoqa site
     Verify Demoqa site
     Wait until ublock initializing

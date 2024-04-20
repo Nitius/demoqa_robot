@@ -21,6 +21,9 @@ Click on "Text Box" menu
     Wait Until Element Is Visible    //div[@class='left-pannel']//span[text()='Text Box']
     Click Element    //div[@class='left-pannel']//span[text()='Text Box']
 
+Verify "Text Box" page
+    Wait Until Element Is Visible    //h1[text()='Text Box']
+
 Fill "Full Name" field
     Wait Until Element Is Visible    //input[@id='userName']
     Input Text    //input[@id='userName']    Test User
@@ -53,6 +56,9 @@ Click on "Check Box" menu
     Wait Until Element Is Visible    //div[@class='left-pannel']//span[text()='Check Box']
     Click Element    //div[@class='left-pannel']//span[text()='Check Box']
 
+Verify "Check Box" page
+    Wait Until Element Is Visible    //h1[text()='Check Box']
+
 Open down "Home" folder
     Click Element    //span[text()='Home']/ancestor::span[@class='rct-text']//button
 
@@ -78,9 +84,12 @@ Verify checkboxes
 
 # RADIO BUTTON
 
-Click on "Radio button" menu
+Click on "Radio Button" menu
     Wait Until Element Is Visible    //div[@class='left-pannel']//span[text()='Radio Button']
     Click Element    //div[@class='left-pannel']//span[text()='Radio Button']
+
+Verify "Radio Button" page
+    Wait Until Element Is Visible    //h1[text()='Radio Button']
 
 Click on "Yes" radio button
     Click Element    //input[@id='yesRadio']/../label
@@ -99,6 +108,9 @@ Verify "Impressive" radio button
 Click on "Web Tables" menu
     Wait Until Element Is Visible    //div[@class='left-pannel']//span[text()='Web Tables']
     Click Element    //div[@class='left-pannel']//span[text()='Web Tables']
+
+Verify "Web Tables" page
+    Wait Until Element Is Visible    //h1[text()='Web Tables']
 
 Click on "Add" button
     Click Element    //button[@id='addNewRecordButton']
@@ -148,3 +160,30 @@ Click on the "Delete" button
     
 Verify new table row is deleted
     Wait Until Element Is Not Visible    //div[text()='User']
+
+# Buttons
+
+Click on "Buttons" menu
+    Wait Until Element Is Visible    //div[@class='left-pannel']//span[text()='Buttons']
+    Click Element    //div[@class='left-pannel']//span[text()='Buttons']
+
+Verify "Buttons" page
+    Wait Until Element Is Visible    //h1[text()='Buttons']
+
+Double click on "Double Click Me" button
+    Double Click Element    //button[@id='doubleClickBtn']
+    
+Verify successful double click
+    Wait Until Element Is Visible    //p[@id='doubleClickMessage'][text()='You have done a double click']
+
+Right click on "Right Click Me" button
+    Open Context Menu    //button[@id='rightClickBtn']
+
+Verify successful right click
+    Wait Until Element Is Visible    //p[@id='rightClickMessage'][text()='You have done a right click']
+    
+Click on "Click Me" button
+    Click Element    //button[text()='Click Me']
+    
+Verify successful click
+    Wait Until Element Is Visible    //p[@id='dynamicClickMessage'][text()='You have done a dynamic click']
