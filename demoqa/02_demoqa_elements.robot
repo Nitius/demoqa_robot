@@ -1,7 +1,9 @@
 *** Settings ***
 
 Documentation    Test
+Resource    resource/0_step_setup.resource
 Resource    resource/2_step_elements.resource
+
 
 *** Variables ***
 ${first_name_value}    Test
@@ -101,7 +103,7 @@ Delete new table row
     Verify new table row is deleted
     
 # Buttons
-Open Buttons
+Open "Buttons"
     [Tags]    buttons
     Click on "Buttons" menu
     Verify "Buttons" page
@@ -114,3 +116,65 @@ Click on the buttons
     Verify successful right click
     Click on "Click Me" button
     Verify successful click
+
+Open "Links"
+    [Tags]    links
+    Click on "Links" menu
+    Verify "Links" page
+    
+Click on "Home" link
+    [Tags]    links
+    Click on "Home" link
+    Verify "Home" new tab
+    Close "Home" tab
+
+Click on dynamic "Home" link
+    [Tags]    links
+    Click on dymaic "Home" link
+    Verify "Home" new tab
+    Close "Home" tab
+
+Click on "Created" api link
+    [Tags]    links
+    Click on "Created" api link
+    Verify 201 status code
+
+Click on "No Content" api link
+    [Tags]    links
+    Click on "No content" api link
+    Verify 204 status code
+
+Click on "Moved" api link
+    [Tags]    links
+    Click on "Moved" api link
+    Verify 301 status code
+
+Click on "Bad Request" api link
+    [Tags]    links
+    Click on "Bad Request" api link
+    Verify 400 status code
+
+Click on "Unauthorized" api link
+    [Tags]    links
+    Click on "Unauthorized" api link
+    Verify 401 status code
+
+Click on "Forbidden" api link
+    [Tags]    links
+    Click on "Forbidden" api link
+    Verify 403 status code
+
+Click on "Not Found" api link
+    [Tags]    links
+    Click on "Not Found" api link
+    Verify 404 status code
+
+Teardown
+    Close Browser
+
+
+
+
+
+
+

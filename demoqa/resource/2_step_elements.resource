@@ -2,6 +2,8 @@
 Documentation     This is a resource file, that can contain variables and keywords.
 ...               Keywords defined here can be used where this Keywords.resource in loaded.
 Library           SeleniumLibrary
+Library           RequestsLibrary
+
 
 *** Variables ***
 ${url}    https://demoqa.com
@@ -187,3 +189,68 @@ Click on "Click Me" button
     
 Verify successful click
     Wait Until Element Is Visible    //p[@id='dynamicClickMessage'][text()='You have done a dynamic click']
+
+# Links
+Click on "Links" menu
+    Wait Until Element Is Visible    //div[@class='left-pannel']//span[text()='Links']
+    Click Element    //div[@class='left-pannel']//span[text()='Links']
+
+Verify "Links" page
+    Wait Until Element Is Visible    //h1[text()='Links']
+
+Click on "Home" link
+    Click Element    //a[@id='simpleLink']
+    Switch Window    NEW
+
+Verify "Home" new tab
+    Wait Until Element Is Visible    //img[@alt='Selenium Online Training']  5
+
+Close "Home" tab
+    Close Window
+    Switch Window    MAIN
+
+Click on dymaic "Home" link
+    Click Element    //a[@id='dynamicLink']
+    Switch Window    NEW
+
+Click on "Created" api link
+    Click Element    //a[@id='created']
+
+Verify 201 status code
+    ${response}=    GET    https://demoqa.com/created    expected_status=201
+
+Click on "No content" api link
+    Click Element    //a[@id='no-content']
+
+Verify 204 status code
+    ${response}=    GET    https://demoqa.com/no-content    expected_status=204
+
+Click on "Moved" api link
+    Click Element    //a[@id='moved']
+
+Verify 301 status code
+    ${response}=    GET    https://demoqa.com/moved    expected_status=301
+
+Click on "Bad Request" api link
+    Click Element    //a[@id='bad-request']
+
+Verify 400 status code
+    ${response}=    GET    https://demoqa.com/bad-request    expected_status=400
+
+Click on "Unauthorized" api link
+    Click Element    //a[@id='unauthorized']
+
+Verify 401 status code
+    ${response}=    GET    https://demoqa.com/unauthorized    expected_status=401
+
+Click on "Forbidden" api link
+    Click Element    //a[@id='forbidden']
+
+Verify 403 status code
+    ${response}=    GET    https://demoqa.com/forbidden    expected_status=403
+
+Click on "Not Found" api link
+    Click Element    //a[@id='invalid-url']
+
+Verify 404 status code
+    ${response}=    GET    https://demoqa.com/invalid-url    expected_status=404
