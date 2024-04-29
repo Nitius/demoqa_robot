@@ -1,8 +1,8 @@
 *** Settings ***
 
 Documentation    Test
-Resource    resource/0_step_setup.resource
-Resource    resource/1_step_navigation.resource
+Resource    resource/00_step_setup.resource
+Resource    resource/01_step_navigation.resource
 
 *** Test Cases ***
 

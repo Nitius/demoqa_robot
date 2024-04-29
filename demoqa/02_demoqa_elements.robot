@@ -1,8 +1,8 @@
 *** Settings ***
 
 Documentation    Test
-Resource    resource/0_step_setup.resource
-Resource    resource/2_step_elements.resource
+Resource    resource/00_step_setup.resource
+Resource    resource/02_step_elements.resource
 
 
 *** Variables ***
@@ -102,7 +102,8 @@ Delete new table row
     Click on the "Delete" button
     Verify new table row is deleted
     
-# Buttons
+# BUTTONS
+
 Open "Buttons"
     [Tags]    buttons
     Click on "Buttons" menu
@@ -117,11 +118,13 @@ Click on the buttons
     Click on "Click Me" button
     Verify successful click
 
+# LINKS
+
 Open "Links"
     [Tags]    links
     Click on "Links" menu
     Verify "Links" page
-    
+
 Click on "Home" link
     [Tags]    links
     Click on "Home" link
@@ -168,6 +171,53 @@ Click on "Not Found" api link
     [Tags]    links
     Click on "Not Found" api link
     Verify 404 status code
+
+# BROKEN LINKS - IMAGES
+
+Open "Broken Links - Images"
+    [Tags]    broken_link
+    Click on "Broken Links - Images" menu
+    Verify "Broken Links - Images" page
+
+Verify Images and links
+    [Tags]    broken_link
+    Verify "Valid image"
+    Verify "Broken image"
+    Verify "Valid link"
+    Go Back
+    Verify "Broken Links - Images" page
+    Verify "Broken link"
+    Go Back
+    Verify "Broken Links - Images" page
+
+# UPLOAD AND DOWNLOAD
+
+Open "Upload and Download"
+    [Tags]    upload_download
+    Click on "Upload and Download" menu
+    Verify "Upload and Download" page
+
+Click on "Download" button
+    [Tags]    upload_download
+    Click on "Download" button
+
+Upload a file
+    [Tags]    upload_download
+    Upload file
+    Verify Uploaded file
+
+# DYNAMIC PROPERTIES
+
+Open "Dynamic Properties"
+    [Tags]    dynamic_properties
+    Click on "Dynamic Properties" menu
+    Verify "Dynamic Properties" page
+
+Wait until buttons changes
+    [Tags]    dynamic_properties
+    Wait until button is not disabled
+    Verify "Color Change" button
+    Verify "Visible After 5 Seconds" button
 
 Teardown
     Close Browser

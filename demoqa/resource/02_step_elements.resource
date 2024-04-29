@@ -203,7 +203,7 @@ Click on "Home" link
     Switch Window    NEW
 
 Verify "Home" new tab
-    Wait Until Element Is Visible    //img[@alt='Selenium Online Training']  5
+    Wait Until Element Is Visible    //img[@alt='Selenium Online Training']    5
 
 Close "Home" tab
     Close Window
@@ -254,3 +254,63 @@ Click on "Not Found" api link
 
 Verify 404 status code
     ${response}=    GET    https://demoqa.com/invalid-url    expected_status=404
+
+# BROKEN LINKS - IMAGES
+
+Click on "Broken Links - Images" menu
+    Wait Until Element Is Visible    //div[@class='left-pannel']//span[text()='Broken Links - Images']
+    Click Element    //div[@class='left-pannel']//span[text()='Broken Links - Images']
+
+Verify "Broken Links - Images" page
+    Wait Until Element Is Visible    //h1[text()='Broken Links - Images']
+
+Verify "Valid image"
+    Page Should Contain Image    //div/img[@src='/images/Toolsqa.jpg']
+
+Verify "Broken image"
+    Page Should Contain Image    //div/img[@src='/images/Toolsqa_1.jpg']
+
+Verify "Valid link"
+    Click Element    //a[text()='Click Here for Valid Link']
+    Wait Until Element Is Visible    //img[@alt='Selenium Online Training']    5
+
+Verify "Broken link"
+    Click Element    //a[text()='Click Here for Broken Link']
+    Wait Until Element Is Visible    //p[contains(normalize-space(), 'This page returned a 500 status code.')]    5
+
+# UPLOAD AND DOWNLOAD
+
+Click on "Upload and Download" menu
+    Wait Until Element Is Visible    //div[@class='left-pannel']//span[text()='Upload and Download']
+    Click Element    //div[@class='left-pannel']//span[text()='Upload and Download']
+
+Verify "Upload and Download" page
+    Wait Until Element Is Visible    //h1[text()='Upload and Download']
+
+Click on "Download" button
+    Click Element    //a[@id='downloadButton']
+
+Upload file
+    Choose File    //input[@id='uploadFile']    ${CURDIR}/files/dummy.pdf
+    
+Verify Uploaded file
+    Wait Until Element Is Visible    //p[@id='uploadedFilePath'][contains(text(), 'dummy.pdf')]
+
+# DYNAMIC PROPERTIES
+
+Click on "Dynamic Properties" menu
+    Wait Until Element Is Visible    //div[@class='left-pannel']//span[text()='Dynamic Properties']
+    Click Element    //div[@class='left-pannel']//span[text()='Dynamic Properties']
+
+Verify "Dynamic Properties" page
+    Wait Until Element Is Visible    //h1[text()='Dynamic Properties']
+    
+Wait until button is not disabled
+    Wait Until Element Is Not Visible    //button[@id='enableAfter'][@disabled]    6
+
+Verify "Color Change" button
+    Wait Until Element Is Visible    //button[@id='colorChange'][@class='mt-4 text-danger btn btn-primary']
+
+Verify "Visible After 5 Seconds" button
+    Wait Until Element Is Visible    //button[@id='visibleAfter']
+
